@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: bloomi
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+  main:
+    web-application-type: servlet
+server:
+  port: 8081

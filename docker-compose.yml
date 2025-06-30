@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  bloomi-backend:
+    build:
+      context: .
+      args:
+        MONGODB_URI: mongodb+srv://BloomiAdmin:bloomi1234@mybloomi.h6wjqdz.mongodb.net/mybloomi?retryWrites=true&w=majority&appName=MYBLOOMI
+    ports:
+      - "8081:8081"
+    environment:
+      - MONGODB_URI=mongodb+srv://BloomiAdmin:bloomi1234@mybloomi.h6wjqdz.mongodb.net/mybloomi?retryWrites=true&w=majority&appName=MYBLOOMI
