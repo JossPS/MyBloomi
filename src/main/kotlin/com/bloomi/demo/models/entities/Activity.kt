@@ -11,7 +11,7 @@ data class Activity(
     @Id
     val id: String? = null,
     val title: String,
-    val type: ActivityType,
+    val type: String,
     val description: String,
     val location: String,
     val date: LocalDate,

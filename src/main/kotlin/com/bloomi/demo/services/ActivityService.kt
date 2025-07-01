@@ -6,12 +6,14 @@ import com.bloomi.demo.models.requests.CreateActivityRequest
 import com.bloomi.demo.models.requests.UpdateActivityRequest
 import com.bloomi.demo.models.responses.ActivityResponse
 import com.bloomi.demo.repositories.ActivityRepository
+import com.bloomi.demo.repositories.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
 class ActivityService(
     private val activityRepository: ActivityRepository,
-    private val activityMapper: ActivityMapper
+    private val activityMapper: ActivityMapper,
+    userRepository: UserRepository
 ) {
 
     fun createActivity(request: CreateActivityRequest): ActivityResponse {
@@ -37,7 +39,7 @@ class ActivityService(
 
         val updated = existing.copy(
             title = request.title ?: existing.title,
-            type = request.type ?: existing.type,
+            type = request.type?.name ?: existing.type,
             description = request.description ?: existing.description,
             location = request.location ?: existing.location,
             date = request.date ?: existing.date,

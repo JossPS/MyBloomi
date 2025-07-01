@@ -19,7 +19,8 @@ class UserMapper {
         return UserResponse(
             id = user.id ?: "",
             name = user.name,
-            email = user.email
+            email = user.email,
+            joinedActivities = user.joinedActivities
         )
     }
 }

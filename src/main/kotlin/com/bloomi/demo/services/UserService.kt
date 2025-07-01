@@ -39,6 +39,7 @@ class UserService (
         if (!userRepository.existsById(id)){
             throw ResourceNotFoundException("User with ID $id cannot be deleted because it does not exist ")
         }
+        userRepository.deleteById(id)
     }
 
     fun joinActivity(userId: String, activityId: String): UserResponse {

@@ -1,6 +1,7 @@
 package com.bloomi.demo.mappers
 
 import com.bloomi.demo.models.entities.Activity
+import com.bloomi.demo.models.entities.ActivityType
 import com.bloomi.demo.models.requests.CreateActivityRequest
 import com.bloomi.demo.models.responses.ActivityResponse
 import org.springframework.stereotype.Component
@@ -12,7 +13,7 @@ class ActivityMapper {
     fun toEntity(request: CreateActivityRequest): Activity {
         return Activity(
             title = request.title,
-            type = request.type,
+            type = request.type.name,
             description = request.description,
             location = request.location,
             date = request.date,
@@ -24,7 +25,7 @@ class ActivityMapper {
         return ActivityResponse(
             id = activity.id ?: "",
             title = activity.title,
-            type = activity.type,
+            type = ActivityType.valueOf(activity.type),
             description = activity.description,
             location = activity.location,
             date = activity.date,
