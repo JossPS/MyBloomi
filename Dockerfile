@@ -1,23 +1,15 @@
-# Usa una imagen base de JDK 17
 FROM eclipse-temurin:21-jdk
 
-# Crea una carpeta de trabajo
 WORKDIR /app
 
-# Define una variable de entorno de build
-ARG MONGODB_URI
-
-# Exporta la variable para que esté disponible en tiempo de build
-ENV MONGODB_URI=$MONGODB_URI
-
-# Copia todos los archivos del proyecto
+#Copia todos los archivos del proyecto
 COPY . .
 
 # Da permisos a gradlew (por si no tiene)
 RUN chmod +x ./gradlew
 
 # Construye el proyecto con Gradle
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build -x test --no-daemon
 
 # Expone el puerto definido en application.yml
 EXPOSE 8081

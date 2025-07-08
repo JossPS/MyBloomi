@@ -198,6 +198,22 @@ class UserServiceTest {
         }
     }
 
+    @Test
+    fun should_return_all_users() {
+        val users = listOf(
+            User(id = "u1", name = "Ana", email = "ana@gmail.com"),
+            User(id = "u2", name = "Luis", email = "luis@gmail.com")
+        )
+
+        `when`(userRepository.findAll()).thenReturn(users)
+
+        val result = userService.getAllUsers()
+
+        assertEquals(2, result.size)
+        assertEquals("Ana", result[0].name)
+        assertEquals("Luis", result[1].name)
+    }
+
 
 
 
